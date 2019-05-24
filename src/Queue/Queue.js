@@ -12,7 +12,7 @@ class Queue {
     }
 
     enqueue(data) {
-      const node = new Node(data);
+      const node = new _Node(data);
 
       if(this.first === null) {
         this.first = node;
@@ -38,3 +38,5 @@ class Queue {
       return node.value;
     }
 }
+
+module.exports = Queue;
