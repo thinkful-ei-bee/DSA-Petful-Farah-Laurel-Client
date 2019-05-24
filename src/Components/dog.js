@@ -18,7 +18,7 @@ class Dog extends React.Component {
     console.log('dogs:', this.props.dogs)
     return(
       <div className="dog">
-          {dogInfo}
+          {/* {dogInfo} */}
       </div>
     )
   }

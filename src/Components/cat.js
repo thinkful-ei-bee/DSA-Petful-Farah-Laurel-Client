@@ -16,7 +16,7 @@ class Cat extends React.Component {
 
     return(
       <div className="cat">
-          {catInfo}
+          {/* {catInfo} */}
       </div>
     )
   }
