@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Cat from './cat';
+import Dog from './dog';
 
 class AdoptionPage extends React.Component {
     render() {
@@ -12,6 +14,8 @@ class AdoptionPage extends React.Component {
                 </nav>
                 <h1>Adopt Me!</h1>
                 <div className="pet-info">  
+                    <Dog />
+                    <Cat />
                 </div>
             </div>
         )
