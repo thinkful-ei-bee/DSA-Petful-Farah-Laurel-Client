@@ -6,8 +6,8 @@ import AdoptionPage from './Components/AdoptionPage.js';
 
 class App extends React.Component {
   state = {
-    dogs: [],
-    cats: [],
+    dogs: {},
+    cats: {},
     adopted: false,
   }
 

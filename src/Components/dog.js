@@ -2,23 +2,24 @@ import React from 'react';
 
 class Dog extends React.Component {
   render() {
-    const dogs = this.props.dogs;
-    const dogInfo = dogs.map((dog, i) => 
-      <div key={i}>
-        <img src={dog.imageURL} alt={dog.imageDescription}/>
-        <h3>More about: {dog.name}</h3>
-        <p>Sex: {dog.sex}</p>
-        <p>Age: {dog.age}</p>
-        <p>Breed: {dog.breed}</p>
-        <p>Story: {dog.story}</p>
-        <button onClick={this.props.adoptButton}>Adopt {dog.name}!</button>
-      </div>
-      )
+    const dogs = (!this.props.dogs.first) ? {} : this.props.dogs.first;
+    const dogInfo = (!dogs.value) ? {} : dogs.value;
 
-    console.log('dogs:', this.props.dogs)
+    console.log(dogInfo.age);
+ 
+    const dogList = 
+    <div>
+      <h3>{dogInfo.name}</h3>
+      <img src={dogInfo.imageURL} alt={dogInfo.imageDescription}/>
+      <p>{dogInfo.sex}</p>
+      <p>{dogInfo.age}</p>
+      <p>{dogInfo.breed}</p>
+      <p>{dogInfo.story}</p>
+    </div>
+
     return(
       <div className="dog">
-          {/* {dogInfo} */}
+          {dogList}
       </div>
     )
   }
