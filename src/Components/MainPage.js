@@ -16,7 +16,7 @@ class MainPage extends React.Component {
                 </section>
                 <section>
                     <h2>About You</h2>
-                    <p>Do you have a love for animals that is unparalleled? If so, we want fur-parents like you. We have many dogs and cats up for adoption.</p>
+                    <p>Do you have a love for animals that is unparalleled? If so, we want fur-parents like you. We have many dogs and cats up for adoption. Click the button below to adopt your next fur-baby.</p>
                 </section>
                 <button type="button">Adopt Here!</button>
             </div>

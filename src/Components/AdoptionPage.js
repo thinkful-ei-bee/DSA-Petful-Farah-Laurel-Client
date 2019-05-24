@@ -2,12 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class AdoptionPage extends React.Component {
-    state = {
-        results: [],
-    }
-
-    
-
 
     render() {
         return(
