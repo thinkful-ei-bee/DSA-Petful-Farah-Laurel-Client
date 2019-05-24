@@ -2,21 +2,26 @@ import React from 'react';
 
 class Cat extends React.Component {
   render() {
-    //const cats = this.props.cats;
-    // const catInfo = cats.map((cat, i) => 
-    //   <div key={i}>
-    //     <img src={cat.imageURL} alt={cat.imageDescription}/>
-    //     <h3>More about: {cat.name}</h3>
-    //     <p>Sex: {cat.sex}</p>
-    //     <p>Age: {cat.age}</p>
-    //     <p>Breed: {cat.breed}</p>
-    //     <p>Story: {cat.story}</p>
-    //   </div>
-    //   )
+    const cats = (!this.props.cats.first) ? {} : this.props.cats.first;
+    const catInfo = (!cats.value) ? {} : cats.value;
+
+    console.log(catInfo.age);
+ 
+    const catList = 
+    <div>
+      <h3>{catInfo.name}</h3>
+      <img src={catInfo.imageURL} alt={catInfo.imageDescription}/>
+      <p>Sex: {catInfo.sex}</p>
+      <p>Age: {catInfo.age}</p>
+      <p>Breed: {catInfo.breed}</p>
+      <p>Story: {catInfo.story}</p>
+
+      <button onClick={this.props.adoptButton}>Adopt {catInfo.name}!</button>
+    </div>
 
     return(
       <div className="cat">
-          {/* {catInfo} */}
+          {catList}
       </div>
     )
   }

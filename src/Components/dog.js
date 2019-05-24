@@ -11,10 +11,12 @@ class Dog extends React.Component {
     <div>
       <h3>{dogInfo.name}</h3>
       <img src={dogInfo.imageURL} alt={dogInfo.imageDescription}/>
-      <p>{dogInfo.sex}</p>
-      <p>{dogInfo.age}</p>
-      <p>{dogInfo.breed}</p>
-      <p>{dogInfo.story}</p>
+      <p>Sex: {dogInfo.sex}</p>
+      <p>Age: {dogInfo.age}</p>
+      <p>Breed: {dogInfo.breed}</p>
+      <p>Story: {dogInfo.story}</p>
+
+      <button onClick={this.props.adoptButton}>Adopt {dogInfo.name}! </button>
     </div>
 
     return(
