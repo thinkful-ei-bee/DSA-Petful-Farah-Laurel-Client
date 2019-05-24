@@ -5,8 +5,6 @@ import Dog from './dog';
 
 class AdoptionPage extends React.Component {
     render() {
-    console.log('dogs:', this.props.dogs)
-    console.log('cats:', this.props.cats)
         return(
             <div className="adoption-page">
                 <nav role="navigation">
@@ -14,8 +12,8 @@ class AdoptionPage extends React.Component {
                 </nav>
                 <h1>Adopt Me!</h1>
                 <div className="pet-info">  
-                    <Dog />
-                    <Cat />
+                    <Dog dogs = {this.props.dogs}/>
+                    <Cat cats = {this.props.cats}/>
                 </div>
             </div>
         )
