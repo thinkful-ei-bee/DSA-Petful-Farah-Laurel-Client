@@ -12,8 +12,8 @@ class AdoptionPage extends React.Component {
                 </nav>
                 <h1>Adopt Me!</h1>
                 <div className="pet-info">  
-                    <Dog dogs = {this.props.dogs}/>
-                    <Cat cats = {this.props.cats}/>
+                    <Dog dogs = {this.props.dogs} adopted={this.props.adopted} adoptButton={this.props.adoptButton}/>
+                    <Cat cats = {this.props.cats} adopted={this.props.adopted} adoptButton={this.props.adoptButton}/>
                 </div>
             </div>
         )

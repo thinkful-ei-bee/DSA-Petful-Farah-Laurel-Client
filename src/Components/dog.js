@@ -11,13 +11,13 @@ class Dog extends React.Component {
         <p>Age: {dog.age}</p>
         <p>Breed: {dog.breed}</p>
         <p>Story: {dog.story}</p>
+        <button onClick={this.props.adoptButton}>Adopt {dog.name}!</button>
       </div>
       )
 
     console.log('dogs:', this.props.dogs)
     return(
       <div className="dog">
-          <h1>I love dogs!</h1>
           {dogInfo}
       </div>
     )

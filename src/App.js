@@ -7,7 +7,8 @@ import AdoptionPage from './Components/AdoptionPage.js';
 class App extends React.Component {
   state = {
     dogs: [],
-    cats: []
+    cats: [],
+    adopted: false,
   }
 
   componentDidMount() {
@@ -31,6 +32,11 @@ class App extends React.Component {
     })
   }
 
+// EVENT HANDLERS
+  handleAdoptButton = () => {
+    this.setState({ adopted: true })
+  }
+
   render() {
     return (
     <div className="App">
@@ -38,7 +44,9 @@ class App extends React.Component {
       <Route exact path="/" component={MainPage}/>
 
       <Route path="/adoptions" render={() => (
-        <AdoptionPage dogs={this.state.dogs} cats={this.state.cats} /> )} />
+        <AdoptionPage dogs={this.state.dogs} cats={this.state.cats} adopted={this.state.adopted}
+                      adoptButton={this.handleAdoptButton}
+        /> )} />
 
     </div>
   );
