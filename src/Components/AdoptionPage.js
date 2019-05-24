@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class AdoptionPage extends React.Component {
-
     render() {
+    console.log('dogs:', this.props.dogs)
+    console.log('cats:', this.props.cats)
         return(
             <div className="adoption-page">
                 <nav role="navigation">

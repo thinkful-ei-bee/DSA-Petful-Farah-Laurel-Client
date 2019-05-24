@@ -6,11 +6,13 @@ import AdoptionPage from './Components/AdoptionPage.js';
 
 class App extends React.Component {
   state = {
-    results: [],
+    dogs: [],
+    cats: []
   }
 
   componentDidMount() {
-    this.fetchApi('dog', 'dog');
+    this.fetchApi('dog', 'dogs');
+    this.fetchApi('cat', 'cats');
   }
 
   fetchApi(endpoint, statekey, method = 'GET', apiBody) {
@@ -22,11 +24,9 @@ class App extends React.Component {
       body: JSON.stringify(apiBody)
     })
     .then(response => {
-      console.log(response)
       return response.json()
     })
     .then(response => {
-      console.log(response)
       this.setState({ [statekey]: response} );
     })
   }
@@ -34,8 +34,12 @@ class App extends React.Component {
   render() {
     return (
     <div className="App">
-        <Route exact path="/" component={MainPage}/>
-        <Route path="/adoptions" component={AdoptionPage} />
+
+      <Route exact path="/" component={MainPage}/>
+
+      <Route path="/adoptions" render={() => (
+        <AdoptionPage dogs={this.state.dogs} cats={this.state.cats} /> )} />
+
     </div>
   );
   }
