@@ -8,8 +8,6 @@ class Cat extends React.Component {
     const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {catInfo.name}!</button>
     : <button onClick={this.props.adoptButton}>{catInfo.name} has been adopted!</button>
 
-    console.log(catInfo.age);
- 
     const catList = 
     <div>
       <h3>{catInfo.name}</h3>
@@ -25,6 +23,10 @@ class Cat extends React.Component {
     return(
       <div className="cat">
           {catList}
+
+        <div className="cat-queue-position">
+          <p>Place in line: {this.props.catQueue}</p>
+        </div>
       </div>
     )
   }

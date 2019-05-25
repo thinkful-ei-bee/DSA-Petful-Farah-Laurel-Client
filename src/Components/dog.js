@@ -8,8 +8,6 @@ class Dog extends React.Component {
     const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {dogInfo.name}!</button>
     : <button onClick={this.props.adoptButton}>{dogInfo.name} has been adopted!</button>
 
-    console.log(dogInfo.age);
- 
     const dogList = 
     <div>
       <h3>{dogInfo.name}</h3>
@@ -22,11 +20,15 @@ class Dog extends React.Component {
       {adoptButton}
     </div>
 
-    return(
-      <div className="dog">
-          {dogList}
+  return(
+    <div className="dog">
+      {dogList}
+
+      <div className="dog-queue-position">
+          <p>Place in line: {this.props.dogQueue}</p>
       </div>
-    )
+    </div>
+  )
   }
 }
 
