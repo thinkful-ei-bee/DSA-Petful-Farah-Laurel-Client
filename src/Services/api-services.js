@@ -11,7 +11,7 @@ const ApiService = {
   },
 
   deleteDog() {
-    return fetch(`http://localhost:8000/api/dog`, {
+    return fetch(`http://localhost:8000/api/dog/delete`, {
         method: "DELETE"
       })
   },
@@ -27,7 +27,7 @@ const ApiService = {
   },
 
   deleteCat() {
-    return fetch(`http://localhost:8000/api/cat`, {
+    return fetch(`http://localhost:8000/api/cat/delete`, {
         method: "DELETE"
       })
   },
