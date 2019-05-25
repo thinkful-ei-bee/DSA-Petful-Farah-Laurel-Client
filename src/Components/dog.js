@@ -6,8 +6,7 @@ class Dog extends React.Component {
     const dogInfo = (!dogs.value) ? {} : dogs.value;
 
     const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {dogInfo.name}!</button>
-    :
-    <button onClick={this.props.adoptButton}>{dogInfo.name} has been adopted!</button>
+    : <button onClick={this.props.adoptButton}>{dogInfo.name} has been adopted!</button>
 
     console.log(dogInfo.age);
  
