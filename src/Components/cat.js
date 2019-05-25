@@ -5,9 +5,6 @@ class Cat extends React.Component {
     const cats = (!this.props.cats.first) ? {} : this.props.cats.first;
     const catInfo = (!cats.value) ? {} : cats.value;
 
-    const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {catInfo.name}!</button>
-    : <button onClick={this.props.adoptButton}>{catInfo.name} has been adopted!</button>
-
     const catList = 
     <div>
       <h3>{catInfo.name}</h3>
@@ -17,7 +14,7 @@ class Cat extends React.Component {
       <p>Breed: {catInfo.breed}</p>
       <p>Story: {catInfo.story}</p>
 
-      {adoptButton}
+      <button onClick={this.props.catAdoptionLine}>Adopt!</button>
     </div>
 
     return(

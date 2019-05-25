@@ -14,14 +14,14 @@ class Dog extends React.Component {
       <p>Breed: {dogInfo.breed}</p>
       <p>Story: {dogInfo.story}</p>
 
-      <button onClick={this.props.adoptionLine}>Adopt!</button>
+      <button onClick={this.props.dogAdoptionLine}>Adopt!</button>
     </div>
 
   return(
     <div className="dog">
       {dogList}
 
-      <div className="dog-queue-position">
+      <div className="dog-queue">
           <p>Place in line: {this.props.dogQueue}</p>
       </div>
     </div>

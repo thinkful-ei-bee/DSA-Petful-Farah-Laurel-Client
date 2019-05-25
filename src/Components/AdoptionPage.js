@@ -6,8 +6,8 @@ import ApiService from '../Services/api-services';
 
 class AdoptionPage extends React.Component {
   state = {
-    dogs: {},
-    cats: {},
+    dogs: [],
+    cats: [],
     adoptedDog: false,
     adoptedCat: false,
     dogQueuePosition: 1,
@@ -26,7 +26,7 @@ class AdoptionPage extends React.Component {
     })
   }
 
-  adoptionLine = () => {
+  dogAdoptionLine = () => {
     this.setState({ 
       adoptedDog: true, 
       dogQueuePosition: this.state.dogQueuePosition + 1,
@@ -34,18 +34,31 @@ class AdoptionPage extends React.Component {
     if (this.state.dogQueuePosition >= 1) {
       ApiService.deleteDog()
         .then(response => {
-          this.setState({ 
-            dogs: response })
+          ApiService.getDog()
+            .then(res => {
+              this.setState({ 
+                dogs: res
+              })
+            })
         })
+      }
     }
 
+  catAdoptionLine = () => {
+    this.setState({ 
+      adoptedCat: true, 
+      catQueuePosition: this.state.catQueuePosition + 1,
+    })  
     if (this.state.catQueuePosition >= 1) {
       ApiService.deleteCat()
         .then(response => {
-          this.setState({ cats: response })
+          ApiService.getCat()
+            .then(res => {
+              this.setState({ cats: res })
+            })
         })
+      }
     }
-  }
     
   render() {
     return(
@@ -55,8 +68,8 @@ class AdoptionPage extends React.Component {
         </nav>
         <h1>Adopt Me!</h1>
         <div className="pet-info">  
-          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} adoptionLine={this.adoptionLine} />
-          <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} adoptionLine={this.adoptionLine}/>
+          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} dogAdoptionLine={this.dogAdoptionLine} />
+          <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} catAdoptionLine={this.catAdoptionLine}/>
         </div>
       </div>
     )
