@@ -10,7 +10,7 @@ class AdoptionPage extends React.Component {
     cats: {},
     adoptedDog: false,
     adoptedCat: false,
-    dogQueuePosition: 0,
+    dogQueuePosition: 1,
     catQueuePosition: 0
   }
 
@@ -26,11 +26,19 @@ class AdoptionPage extends React.Component {
     })
   }
 
-  handleAdoption = () => {
-    if (this.state.dogQueuePosition > 0) {
+  adoptionLine = () => {
+    this.setState({ 
+      adoptedDog: true, 
+      dogQueuePosition: this.state.dogQueuePosition + 1,
+    })
+    console.log(this.state.dogQueuePosition)
+    if (this.state.dogQueuePosition >= 1) {
+      console.log('hello from dog queue')
       ApiService.deleteDog()
         .then(response => {
-          this.setState({ dogs: response })
+          console.log(response)
+          this.setState({ 
+            dogs: response })
         })
     }
 
@@ -41,6 +49,10 @@ class AdoptionPage extends React.Component {
         })
     }
   }
+
+  // handleAdoptButton = () => {
+    
+  // }
     
   render() {
     return(
@@ -50,8 +62,8 @@ class AdoptionPage extends React.Component {
         </nav>
         <h1>Adopt Me!</h1>
         <div className="pet-info">  
-          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} handleAdoption={this.handleAdoption}/>
-          <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} handleAdoption={this.handleAdoption}/>
+          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} adoptionLine={this.adoptionLine} handleAdoptButton={this.handleAdoptButton}/>
+          <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} adoptionLine={this.adoptionLine}/>
         </div>
       </div>
     )

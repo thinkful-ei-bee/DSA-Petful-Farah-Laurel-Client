@@ -5,8 +5,8 @@ class Dog extends React.Component {
     const dogs = (!this.props.dogs.first) ? {} : this.props.dogs.first;
     const dogInfo = (!dogs.value) ? {} : dogs.value;
 
-    const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {dogInfo.name}!</button>
-    : <button onClick={this.props.adoptButton}>{dogInfo.name} has been adopted!</button>
+    // const adoptButton = (!this.props.adopted) ? <button onClick={this.props.adoptButton}>Adopt {dogInfo.name}!</button>
+    // : <button onClick={this.props.adoptButton}>{dogInfo.name} has been adopted!</button>
 
     const dogList = 
     <div>
@@ -17,8 +17,10 @@ class Dog extends React.Component {
       <p>Breed: {dogInfo.breed}</p>
       <p>Story: {dogInfo.story}</p>
 
-      {adoptButton}
+      <button onClick={this.props.adoptionLine}>Adopt!</button>
     </div>
+
+   // console.log(this.props.dogs)
 
   return(
     <div className="dog">
