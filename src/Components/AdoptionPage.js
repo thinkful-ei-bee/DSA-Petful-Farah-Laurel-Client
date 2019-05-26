@@ -18,13 +18,13 @@ class AdoptionPage extends React.Component {
     ApiService.getDog()
     .then(response => {
       this.setState({ dogs: response} );
+      console.log(response.first.next)
     })
 
     ApiService.getCat()
     .then(response => {
       this.setState({ cats: response} );
-    })
-  }
+    }) }
 
   dogAdoptionLine = () => {
     this.setState({ 
@@ -36,13 +36,10 @@ class AdoptionPage extends React.Component {
         .then(response => {
           ApiService.getDog()
             .then(res => {
-              this.setState({ 
-                dogs: res
-              })
+              this.setState({ dogs: res })
             })
         })
-      }
-    }
+      }}
 
   catAdoptionLine = () => {
     this.setState({ 
@@ -57,8 +54,14 @@ class AdoptionPage extends React.Component {
               this.setState({ cats: res })
             })
         })
-      }
-    }
+      }}
+
+  nextDogButton = () => {
+    ApiService.getDog()
+      .then(response => {
+        this.setState({ dogs: response.first.next})
+      })
+  }
     
   render() {
     return(
@@ -68,7 +71,8 @@ class AdoptionPage extends React.Component {
         </nav>
         <h1>Adopt Me!</h1>
         <div className="pet-info">  
-          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} dogAdoptionLine={this.dogAdoptionLine} />
+          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} dogAdoptionLine={this.dogAdoptionLine}
+          nextDog={this.nextDogButton} />
           <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} catAdoptionLine={this.catAdoptionLine}/>
         </div>
       </div>

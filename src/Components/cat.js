@@ -7,7 +7,10 @@ class Cat extends React.Component {
 
     const catList = 
     <div>
-      <h3>{catInfo.name}</h3>
+      <div className="cat-name">
+        <h3>{catInfo.name}</h3> 
+        <button> > </button>
+      </div>
       <img src={catInfo.imageURL} alt={catInfo.imageDescription}/>
       <p>Sex: {catInfo.sex}</p>
       <p>Age: {catInfo.age} year</p>

@@ -30,3 +30,14 @@
 .cat img {
   margin-left: 30px;
 }
+
+.dog-name, .cat-name{
+  display: flex;
+  justify-content: center
+}
+
+.dog-name button, .cat-name button{
+  background: none;
+  border: none;
+  font-size: 30px;
+}

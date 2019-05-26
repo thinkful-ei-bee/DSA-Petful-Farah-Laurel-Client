@@ -7,7 +7,10 @@ class Dog extends React.Component {
 
     const dogList = 
     <div>
-      <h3>{dogInfo.name}</h3>
+      <div className="dog-name">
+        <h3>{dogInfo.name}</h3> 
+        <button onClick={this.props.nextDog}> > </button>
+      </div>
       <img src={dogInfo.imageURL} alt={dogInfo.imageDescription}/>
       <p>Sex: {dogInfo.sex}</p>
       <p>Age: {dogInfo.age} year</p>
