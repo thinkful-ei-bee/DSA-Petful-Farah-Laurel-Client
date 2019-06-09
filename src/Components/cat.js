@@ -1,35 +1,28 @@
 import React from 'react';
+import '../App.css'
 
-class Cat extends React.Component {
-  render() {
-    const cats = (!this.props.cats.first) ? {} : this.props.cats.first;
-    const catInfo = (!cats.value) ? {} : cats.value;
+export default class Cat extends React.Component{
+  render (){
+    const cats = (!this.props.pet.first) ? {} : this.props.pet.first.value
+    const available = this.props.status === 'Available for Adoption';
+      return (
+        <section className="dog">
+          
+          <button className="prev-button" disabled={this.props.position === 0} onClick={this.props.prev}>{'<'}</button>
+          <p>{cats.name}</p>
+          <button className="next-button" onClick={this.props.next}>{'>'}</button>
 
-    const catList = 
-    <div>
-      <div className="cat-name">
-        <h3>{catInfo.name}</h3> 
-        <button> > </button>
-      </div>
-      <img src={catInfo.imageURL} alt={catInfo.imageDescription}/>
-      <p>Sex: {catInfo.sex}</p>
-      <p>Age: {catInfo.age} year</p>
-      <p>Breed: {catInfo.breed}</p>
-      <p>Story: {catInfo.story}</p>
-
-      <button onClick={this.props.catAdoptionLine}>Adopt!</button>
-    </div>
-
-    return(
-      <div className="cat">
-          {catList}
-
-        <div className="cat-queue-position">
-          <p>Place in line: {this.props.catQueue}</p>
-        </div>
-      </div>
-    )
+          <img src={cats.imageURL} alt="pet for adoption" />
+          
+          <p>Sex: {cats.sex}</p>
+          <p>Age: {cats.age}</p>
+          <p>Breed: {cats.breed}</p>
+          <p>Story: {cats.story}</p>
+          <p>Status: {this.props.status}</p>
+          <span>
+            <button disabled={!available} onClick={this.props.adopt}>Adopt {cats.name}</button>
+          </span>
+        </section>  
+      )
   }
 }
-
-export default Cat;

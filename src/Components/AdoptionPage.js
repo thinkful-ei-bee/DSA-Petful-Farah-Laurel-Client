@@ -1,83 +1,161 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Cat from './cat';
-import Dog from './dog';
-import ApiService from '../Services/api-services';
+import { Link } from "react-router-dom";
+import ApiService from "../../src/Services/api-services";
+import Dog from "../Components/dog";
+import Cat from '../Components/cat'
+import '../App.css'
 
-class AdoptionPage extends React.Component {
+export default class AdoptionPage extends React.Component{
   state = {
-    dogs: [],
-    cats: [],
-    adoptedDog: false,
-    adoptedCat: false,
-    dogQueuePosition: 1,
-    catQueuePosition: 1
+    dogs: [{}],
+    cats: [{}],
+    dogQueuePosition: 0,
+    catQueuePosition: 0,
+    userQueuePosition: 0,
+    adoptDog: false,
+    adoptCat: false
   }
 
   componentDidMount(){
-    ApiService.getDog()
-    .then(response => {
-      this.setState({ dogs: response} );
-      console.log(response.first.next)
-    })
-
-    ApiService.getCat()
-    .then(response => {
-      this.setState({ cats: response} );
-    }) }
-
-  dogAdoptionLine = () => {
-    this.setState({ 
-      adoptedDog: true, 
-      dogQueuePosition: this.state.dogQueuePosition + 1,
-    })
-    if (this.state.dogQueuePosition >= 1) {
-      ApiService.deleteDog()
-        .then(response => {
-          ApiService.getDog()
-            .then(res => {
-              this.setState({ dogs: res })
-            })
-        })
-      }}
-
-  catAdoptionLine = () => {
-    this.setState({ 
-      adoptedCat: true, 
-      catQueuePosition: this.state.catQueuePosition + 1,
-    })  
-    if (this.state.catQueuePosition >= 1) {
-      ApiService.deleteCat()
-        .then(response => {
-          ApiService.getCat()
-            .then(res => {
-              this.setState({ cats: res })
-            })
-        })
-      }}
+    Promise.all([ApiService.getCat(), ApiService.getDog()])
+    .then(arr => this.setState({
+      dogs: [arr[1]],
+      cats: [arr[0]],
+      //userQueuePosition: Math.floor(Math.random() * 3)
+    }))
+  }
 
   nextDogButton = () => {
-    ApiService.getDog()
-      .then(response => {
-        this.setState({ dogs: response.first.next})
-      })
+    if (this.state.dogs[this.state.dogQueuePosition + 1]) {
+      this.setState({
+          dogQueuePosition: this.state.dogQueuePosition + 1
+      });
+    } else {
+      return ApiService.deleteDog().then(e => {
+        ApiService.getDog().then(dog => {
+          const newArr = [...this.state.dogs];
+          newArr.push(dog);
+          this.setState({
+            dogs: newArr,
+            dogQueuePosition: this.state.dogQueuePosition + 1
+            });
+        });
+      });
+    }
   }
-    
-  render() {
-    return(
-      <div className="adoption-page">
-        <nav role="navigation">
-          <Link to="/">Home</Link>
-        </nav>
-        <h1>Adopt Me!</h1>
-        <div className="pet-info">  
-          <Dog dogs = {this.state.dogs} adoptedDog={this.state.adoptedDog} dogQueue={this.state.dogQueuePosition} dogAdoptionLine={this.dogAdoptionLine}
-          nextDog={this.nextDogButton} />
-          <Cat cats = {this.state.cats} adoptedCat={this.state.adoptedCat} catQueue={this.state.catQueuePosition} catAdoptionLine={this.catAdoptionLine}/>
-        </div>
+
+  nextCatButton = () => {
+    if (this.state.cats[this.state.catQueuePosition + 1]) {
+      this.setState({
+          catQueuePosition: this.state.catQueuePosition + 1
+      });
+    } else {
+      return ApiService.deleteCat().then(e => {
+        ApiService.getCat().then(cat => {
+          const newArr = [...this.state.cats];
+          newArr.push(cat);
+          this.setState({
+            cats: newArr,
+            catQueuePosition: this.state.catQueuePosition + 1
+          });
+        });
+      });
+    }
+  }
+
+  previousDog = () => {
+    this.setState({
+      dogQueuePosition: this.state.dogQueuePosition - 1
+    });
+  }
+
+  previousCat = () => {
+    this.setState({
+      catQueuePosition: this.state.catQueuePosition - 1
+    });
+  }
+
+  adoptDog = () => {
+    this.setState({
+      adoptDog: true
+    });
+
+    setTimeout(() => {
+      ApiService.deleteDog().then(e => {
+        ApiService.getDog().then(dog => {
+          const newArr = [...this.state.dogs];
+          newArr.push(dog);
+          this.setState({
+            dogs: newArr,
+            dogQueuePosition: this.state.dogQueuePosition + 1,
+            adoptDog: false
+            });
+        });
+      });
+    }, 2000);
+  }
+
+  adoptCat = () => {
+    this.setState({
+      adoptCat: true
+    })
+
+    setTimeout(() => {
+      ApiService.deleteCat().then(e => {
+        ApiService.getCat().then(cat => {
+          const newArr = [...this.state.cats];
+          newArr.push(cat);
+          this.setState({
+            cats: newArr,
+            catQueuePosition: this.state.catQueuePosition + 1,
+            adoptCat: false
+            });
+        });
+      });
+    }, 2000);
+  }
+
+  render(){
+    if (this.state.catQueuePosition === 4) {
+      this.setState({ catQueuePosition: 0 })
+    }
+    if (this.state.dogQueuePosition === 6) {
+      this.setState({ dogQueuePosition: 0 })
+    }
+
+    const cats = this.state.cats;
+    const dogs = this.state.dogs;
+    let catStatus, dogStatus;
+
+    if (this.state.adoptCat && this.state.catQueuePosition === 0) {
+        catStatus = 'You are in the process of adopting this pet';
+    } else if (this.state.catQueuePosition === 0 & this.state.userQueuePosition === 0) {
+        catStatus = 'Available for Adoption'
+    } else if (this.state.catQueuePosition === 0) {
+        catStatus = `1st in line for adoption, being considered by ${this.state.userQueuePosition === 1 ? 'one other ahead of you' : 'two others ahead of you'}`;
+    } else {
+        catStatus = 'Waiting in line for adoption';
+    }
+  
+    if (this.state.adoptDog && this.state.dogQueuePosition === 0) {
+        dogStatus = 'You are in the process of adopting this pet'
+    } else if (this.state.dogQueuePosition === 0 & this.state.userQueuePosition === 0) {
+        dogStatus = 'Available for Adoption'
+    } else if (this.state.dogQueuePosition === 0) {
+        dogStatus = `1st in line for adoption, being considered by ${this.state.userQueuePosition === 1 ? 'one other ahead of you' : 'two others ahead of you'}`;
+    } else {
+        dogStatus = 'Waiting in line for adoption';
+    }
+
+  return(
+    <section>
+      <h1>Adoption Page</h1>
+      <div className="pet-info">
+        <Cat pet={cats[this.state.catQueuePosition]} status={catStatus} position={this.state.catQueuePosition} next={this.nextCatButton} prev={this.previousCat} adopt={this.adoptCat}/>
+        <Dog pet={dogs[this.state.dogQueuePosition]} status={dogStatus} position={this.state.dogQueuePosition} next={this.nextDogButton} prev={this.previousDog} adopt={this.adoptDog}/>
       </div>
-    )
+      <Link to={'/'}>Back To Home</Link>
+    </section>
+  )
   }
 }
-
-export default AdoptionPage;

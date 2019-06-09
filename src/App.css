@@ -36,8 +36,8 @@
   justify-content: center
 }
 
-.dog-name button, .cat-name button{
+.prev-button, .next-button{
   background: none;
   border: none;
-  font-size: 30px;
+  font-size: 25px;
 }
