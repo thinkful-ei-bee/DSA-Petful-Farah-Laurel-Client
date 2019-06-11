@@ -154,7 +154,7 @@ export default class AdoptionPage extends React.Component{
         <Cat pet={cats[this.state.catQueuePosition]} status={catStatus} position={this.state.catQueuePosition} next={this.nextCatButton} prev={this.previousCat} adopt={this.adoptCat}/>
         <Dog pet={dogs[this.state.dogQueuePosition]} status={dogStatus} position={this.state.dogQueuePosition} next={this.nextDogButton} prev={this.previousDog} adopt={this.adoptDog}/>
       </div>
-      <Link to={'/'}>Back To Home</Link>
+      <Link to={'/'} className="back-home">Back To Home</Link>
     </section>
   )
   }

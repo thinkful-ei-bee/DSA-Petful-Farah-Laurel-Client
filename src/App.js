@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom';
-import MainPage from './Components/MainPage.js';
+import MainPage from './Components/MainPage/MainPage';
 import AdoptionPage from './Components/AdoptionPage.js';
 
 class App extends React.Component {

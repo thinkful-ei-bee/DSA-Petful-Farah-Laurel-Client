@@ -8,9 +8,11 @@ export default class Cat extends React.Component{
       return (
         <section className="dog">
           
-          <button className="prev-button" disabled={this.props.position === 0} onClick={this.props.prev}>{'<'}</button>
-          <p>{cats.name}</p>
-          <button className="next-button" onClick={this.props.next}>{'>'}</button>
+          <div className="catName">
+            <button className="prev-button" disabled={this.props.position === 0} onClick={this.props.prev}>{'<'}</button>
+            <p>{cats.name}</p>
+            <button className="next-button" onClick={this.props.next}>{'>'}</button>
+          </div>
 
           <img src={cats.imageURL} alt="pet for adoption" />
           

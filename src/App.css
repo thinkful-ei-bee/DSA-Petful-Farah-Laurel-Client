@@ -18,8 +18,9 @@
 
 .pet-info{
   display: flex;
-  margin-left: 22%;
+  margin-left: 23%;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .cat img, .dog img{
@@ -31,13 +32,36 @@
   margin-left: 30px;
 }
 
+.dogName, .catName {
+  position: relative;
+}
+
 .dog-name, .cat-name{
   display: flex;
   justify-content: center
 }
 
 .prev-button, .next-button{
+  position: absolute;
   background: none;
   border: none;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.prev-button {
+  left: 30%;
+  top: -5px;
+}
+
+.next-button{
+  right: 30%;
+  top: -5px;
+}
+
+.back-home {
+  padding: 1%;
+  color: black;
+  background: rgb(247, 202, 119);
+  border-radius: 5px;
+  text-decoration: none;
 }
