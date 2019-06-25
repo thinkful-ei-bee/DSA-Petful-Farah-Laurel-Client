@@ -14,6 +14,7 @@ Created by Farah Gustafson and Laurel Butler
 - Nodejs
 - Express
 
+## Screenshots: 
 ### Landing Page: 
 ![Landing Page](src/Screenshots/homepage.png?raw=true)
 

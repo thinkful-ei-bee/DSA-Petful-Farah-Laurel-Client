@@ -137,13 +137,13 @@ export default class AdoptionPage extends React.Component{
         catStatus = 'You are in the process of adopting this pet';
     } 
     else if (this.state.catQueuePosition === 0 & this.state.userQueuePosition === 0) {
-        catStatus = 'Available for Adoption'
+        catStatus = 'Up for Adoption'
     } 
     else if (this.state.catQueuePosition === 0) {
-        catStatus = `1st in line for adoption, being considered by ${this.state.userQueuePosition}  ahead of you.`;
+        catStatus = `First in line for adoption, ${this.state.userQueuePosition} ahead of you.`;
     } 
     else {
-        catStatus = 'Waiting in line for adoption';
+        catStatus = 'In line for adoption';
     }
   
 
@@ -151,11 +151,11 @@ export default class AdoptionPage extends React.Component{
     if (this.state.adoptDog && this.state.dogQueuePosition === 0) {
         dogStatus = 'You are in the process of adopting this pet'
     } else if (this.state.dogQueuePosition === 0 & this.state.userQueuePosition === 0) {
-        dogStatus = 'Available for Adoption'
+        dogStatus = 'Up for Adoption'
     } else if (this.state.dogQueuePosition === 0) {
-        dogStatus = `1st in line for adoption, being considered by ${this.state.userQueuePosition} ahead of you.`;
+        dogStatus = `First in line for adoption, ${this.state.userQueuePosition} ahead of you.`;
     } else {
-        dogStatus = 'Waiting in line for adoption';
+        dogStatus = 'In line for adoption';
     }
 
   return(
