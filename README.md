@@ -15,9 +15,9 @@ Created by Farah Gustafson and Laurel Butler
 - Express
 
 ### Screenshots: 
-[!Landing Page](src/Screenshots/homepage.png)
-[!Adopt a cat](src/Screenshots/cat.png)
-[!Adopt a dog](src/Screenshots/dog.png)
+![Landing Page](src/Screenshots/homepage.png?raw=true)
+![Adopt a cat](src/Screenshots/cat.png?raw=true)
+![Adopt a dog](src/Screenshots/dog.png?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
