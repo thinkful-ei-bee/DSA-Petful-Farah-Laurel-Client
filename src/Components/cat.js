@@ -6,7 +6,8 @@ export default class Cat extends React.Component{
     const cats = (!this.props.pet.first) ? {} : this.props.pet.first.value
     const available = this.props.status === 'Available for Adoption';
       return (
-        <section className="dog">
+        <div className="dog">
+          <div>
           
           <div className="catName">
             <button className="prev-button" disabled={this.props.position === 0} onClick={this.props.prev}>{'<'}</button>
@@ -14,17 +15,22 @@ export default class Cat extends React.Component{
             <button className="next-button" onClick={this.props.next}>{'>'}</button>
           </div>
 
-          <img src={cats.imageURL} alt="pet for adoption" />
+          <div className="img-container">
+            <img src={cats.imageURL} alt="pet for adoption" />
+          </div>
           
-          <p>Sex: {cats.sex}</p>
-          <p>Age: {cats.age}</p>
-          <p>Breed: {cats.breed}</p>
-          <p>Story: {cats.story}</p>
-          <p>Status: {this.props.status}</p>
-          <span>
-            <button disabled={!available} onClick={this.props.adopt}>Adopt {cats.name}</button>
-          </span>
-        </section>  
+          <div className="description-container">
+            <p>Sex: {cats.sex}</p>
+            <p>Age: {cats.age}</p>
+            <p>Breed: {cats.breed}</p>
+            <p>Story: {cats.story}</p>
+            <p>Status: {this.props.status}</p>
+            <span>
+              <button className="adopt-btn" disabled={!available} onClick={this.props.adopt}>Adopt {cats.name}</button>
+            </span>
+          </div>
+          </div>
+        </div>  
       )
   }
 }

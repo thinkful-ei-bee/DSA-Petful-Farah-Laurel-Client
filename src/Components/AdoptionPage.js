@@ -159,8 +159,8 @@ export default class AdoptionPage extends React.Component{
     }
 
   return(
-    <section>
-      <h1>Adoption Page</h1>
+    <section className="adoption-page">
+      <h1 className="adoption-page-h1">Adoption Page</h1>
       <div className="pet-info">
         <Cat pet={cats[this.state.catQueuePosition]} status={catStatus} position={this.state.catQueuePosition} next={this.nextCatButton} prev={this.previousCat} adopt={this.adoptCat}/>
         <Dog pet={dogs[this.state.dogQueuePosition]} status={dogStatus} position={this.state.dogQueuePosition} next={this.nextDogButton} prev={this.previousDog} adopt={this.adoptDog}/>
