@@ -1,7 +1,8 @@
+import config from '../config'
 
 const ApiService = {
   getDog() {
-    return fetch(`http://localhost:8000/api/dog`, {
+    return fetch(config.REACT_APP_API_BASE+'/dog', {
     })
       .then(res =>
         (!res.ok)
@@ -11,13 +12,13 @@ const ApiService = {
   },
 
   deleteDog() {
-    return fetch(`http://localhost:8000/api/dog/delete`, {
+    return fetch(config.REACT_APP_API_BASE+'/dog/delete', {
         method: "DELETE"
       })
   },
 
   getCat() {
-    return fetch(`http://localhost:8000/api/cat`, {
+    return fetch(config.REACT_APP_API_BASE+'/cat', {
     })
       .then(res =>
         (!res.ok)
@@ -27,7 +28,7 @@ const ApiService = {
   },
 
   deleteCat() {
-    return fetch(`http://localhost:8000/api/cat/delete`, {
+    return fetch(config.REACT_APP_API_BASE+'/cat/delete', {
         method: "DELETE"
       })
   },
