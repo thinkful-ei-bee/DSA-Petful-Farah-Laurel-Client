@@ -21,14 +21,21 @@ export default class AdoptionPage extends React.Component{
     .then(arr => this.setState({
       dogs: [arr[1]],
       cats: [arr[0]],
-      //userQueuePosition: Math.floor(Math.random() * 3)
+      userQueuePosition: Math.floor(Math.random() * 3)
     }))
   }
 
   nextDogButton = () => {
-    if (this.state.dogs[this.state.dogQueuePosition + 1]) {
+    if (parseInt(this.state.dogQueuePosition) === 5) {
+      this.setState({ 
+        dogQueuePosition: 0,
+        userQueuePosition: Math.floor(Math.random() * 3)
+      })
+    } 
+    else if (this.state.dogs[this.state.dogQueuePosition + 1]) {
       this.setState({
-          dogQueuePosition: this.state.dogQueuePosition + 1
+          dogQueuePosition: this.state.dogQueuePosition + 1,
+          
       });
     } else {
       return ApiService.deleteDog().then(e => {
@@ -45,11 +52,17 @@ export default class AdoptionPage extends React.Component{
   }
 
   nextCatButton = () => {
-    if (this.state.cats[this.state.catQueuePosition + 1]) {
+    if (parseInt(this.state.catQueuePosition) === 5) {
+      this.setState({ 
+        catQueuePosition: 0,
+        userQueuePosition: Math.floor(Math.random() * 3)
+      })
+    } 
+    else if (this.state.cats[this.state.catQueuePosition + 1]) {
       this.setState({
-          catQueuePosition: this.state.catQueuePosition + 1
-      });
-    } else {
+        catQueuePosition: this.state.catQueuePosition + 1,
+      });}
+    else {
       return ApiService.deleteCat().then(e => {
         ApiService.getCat().then(cat => {
           const newArr = [...this.state.cats];
@@ -116,13 +129,7 @@ export default class AdoptionPage extends React.Component{
   }
 
   render(){
-    if (this.state.catQueuePosition === 4) {
-      this.setState({ catQueuePosition: 0 })
-    }
-    if (this.state.dogQueuePosition === 6) {
-      this.setState({ dogQueuePosition: 0 })
-    }
-
+    console.log(this.state.catQueuePosition)
     const cats = this.state.cats;
     const dogs = this.state.dogs;
     let catStatus, dogStatus;
@@ -137,6 +144,8 @@ export default class AdoptionPage extends React.Component{
         catStatus = 'Waiting in line for adoption';
     }
   
+
+
     if (this.state.adoptDog && this.state.dogQueuePosition === 0) {
         dogStatus = 'You are in the process of adopting this pet'
     } else if (this.state.dogQueuePosition === 0 & this.state.userQueuePosition === 0) {
