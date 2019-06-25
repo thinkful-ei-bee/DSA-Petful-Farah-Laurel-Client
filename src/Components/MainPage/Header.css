@@ -1,0 +1,30 @@
+.header {
+    position: relative;
+    border: 1px solid black;
+    height: 450px;
+    background-image: url('../../adopt-dog.jpg');
+    background-size: 100% 100%;
+}
+
+.welcome {
+    position: absolute;
+    right: 10%;
+    top: 5%;
+    font-size: 30px;
+}
+
+nav a {
+    padding: 1%;
+}
+
+.about-you {
+    margin-bottom: 40px;
+}
+
+.adopt-here {
+    padding: 1%;
+    color: black;
+    background: rgb(247, 202, 119);
+    border-radius: 5px;
+    text-decoration: none;
+}
