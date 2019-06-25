@@ -28,7 +28,6 @@ export default class Dog extends React.Component{
               <button className="adopt-btn" disabled={!available} onClick={this.props.adopt}>Adopt {dogs.name}</button>
             </span>
           </div>
-
         </div>  
       )
   }
