@@ -1,9 +1,18 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+}
+
 .header {
+    margin: auto;
     position: relative;
     border: 1px solid black;
     height: 450px;
-    background-image: url('../../adopt-dog.jpg');
+    background-image: url('../../Photos/adopt-dog.jpg');
+    background-position: cover;
     background-size: 100% 100%;
+    margin-bottom: 2%;
 }
 
 .welcome {
@@ -17,14 +26,22 @@ nav a {
     padding: 1%;
 }
 
-.about-you {
+.about-us, .about-you, .how-it-works {
+    padding: 3%;
+    margin: auto;
     margin-bottom: 40px;
+    border: 2px solid black;
+    font-size: 18px;
+    line-height: 25px;
 }
 
 .adopt-here {
+    margin: auto;
+    font-size: 30px;
     padding: 1%;
     color: black;
     background: rgb(247, 202, 119);
     border-radius: 5px;
     text-decoration: none;
+    width: 20%;
 }

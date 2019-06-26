@@ -4,7 +4,7 @@ import '../App.css'
 export default class Cat extends React.Component{
   render (){
     const cats = (!this.props.pet.first) ? {} : this.props.pet.first.value
-    const available = this.props.status === 'Available for Adoption';
+    const available = this.props.status === 'Up for Adoption';
       return (
         <div className="dog">
           <div>

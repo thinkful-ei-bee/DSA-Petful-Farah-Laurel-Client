@@ -5,7 +5,7 @@ export default class Dog extends React.Component{
   render (){
     
     const dogs = (!this.props.pet.first) ? {} : this.props.pet.first.value
-      const available = this.props.status === 'Available for Adoption';
+      const available = this.props.status === 'Up for Adoption';
       return (
         <div className="dog">
           <div className="dogName">
